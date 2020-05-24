@@ -3,6 +3,7 @@ const inputText = document.querySelector('.TextInput');
 const btn = document.querySelector('.btn');
 const list = document.querySelector('#listInput');
 
+//appending item
 function appendItem(input) {
     let li = document.createElement('li');
     if (input != '') {
@@ -13,13 +14,13 @@ function appendItem(input) {
         listInput.appendChild(li);
     }
 }
-
+// call event loaded to brower
 document.addEventListener('DOMContentLoaded', () => {
     getInputs().map((input) => {
         appendItem(input);
     })
 });
-
+//event add 
 btn.addEventListener('click', (event) => {
     event.preventDefault();
 
@@ -29,7 +30,7 @@ btn.addEventListener('click', (event) => {
     }
     inputText.value = '';
 })
-
+//get dât from localStore
 function getInputs() {
     let Inputs = [];
     if (localStorage.getItem('inputList') === null) {
@@ -39,13 +40,13 @@ function getInputs() {
     }
     return inputs;
 }
-
+//add data to localstorage
 function addInput(input) {
     let inputs = getInputs();
     inputs.push(input);
     localStorage.setItem('inputList', JSON.stringify(inputs));
 }
-
+//delele item
 function deleteItem() {
     let btnClose = document.getElementsByClassName('.closeItem');
     for (let i = 0; i < btnClose.length; i++) {
